@@ -9,4 +9,4 @@ Goals:
 - - created awareness and stewerdship in the QMUL campus
 - - show the importance of quiet green spaces on the environment
 
-theme: hacker
+theme: minima
