@@ -3,9 +3,10 @@ Creative Group Project group F
 
 Creating a Green Digital Twin
 
-- A Quiet Place
+# Sound Escape
 
 Goals:
-- - created awareness and stewerdship in the QMUL campus
-- - show the importance of quiet green spaces on the environment
+- create awareness and stewerdship in the QMUL campus
+- show the importance of quiet green spaces on the environment
 
+website: https://lucianala.github.io/ecs520-creativegp/html/web.html
