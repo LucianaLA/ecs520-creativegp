@@ -6,13 +6,32 @@
     <title>Green Digital Twin</title>
     <link rel='stylesheet' href='../css/style.css' type="text/css" />
     <script type="text/javascript" src="../js/libraries/processing.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/libraries/sound/library/sound.jar"></script>
 </head>
 
 <body>
-    <h1>Sound Escape</h1>
-    <script src="../js/script.js"></script>
-    <script src="../js/libraries/sound/library/sound.jar"></script>
-    <canvas data-processing-sources="../js/noisePan/noisePan.pde"></canvas>
+    <div>
+        <h1>Sound Escape</h1>
+        <h2>Introduction</h2>
+        <p>An immersive radio that provides a platform for the unheard sounds of our campus landscape</p>
+    </div>
+    <div>
+        <h2>Visualisation</h2>
+        <p>This is our visualisation:...</p>
+
+        <!-- visualisation -->
+        <div id="visualisation">
+            <canvas data-processing-sources="../js/noisePan/noisePan.pde"></canvas>
+        </div>
+    </div>
+    <div id="locations">
+        <h2>Where To Go?</h2>
+        <nav id="p1">Around the trees</nav>
+        <nav id="p2">Next to the main road</nav>
+        <nav id="p3">Library square</nav>
+        <nav id="p4">Canal</nav>
+    </div>
 </body>
 
 </html>
