@@ -2,7 +2,6 @@ import processing.sound.*;
 import processing.serial.*;
 
 Serial myPort;
-String sVal;
 
 // citation: https://processing.org/reference/libraries/sound/SoundFile_play_.html
 float w=1023;
