@@ -26,9 +26,10 @@ void setup() {
 }
 
 void draw() {
-    background(255);
-
     serialEvent(myPort);   
+    if (val!=0){
+    background(255);
+  
     file.pan(1); //fully left
     file.amp(val/(w));
     //file3.pan(1);
@@ -36,9 +37,9 @@ void draw() {
     file2.pan(-1); //fully right
     file2.amp(1.0-(val/(w)));
     line(val, 0, val, h);
-    stroke(val*random(0.5),val*random(0.5),val*random(0.5));
+    stroke(255,0,0);//val*random(0.5),val*random(0.5));
     strokeWeight(4);
-
+    }
     println(val);
 }
 
