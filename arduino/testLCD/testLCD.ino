@@ -49,6 +49,8 @@
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 int knobPin = A0;
+  String canal = "...the canal          ";
+  String lsquare = "...Library square";
 
 void setup() {
   Serial.begin(9600);
@@ -62,11 +64,13 @@ void loop() {
     lcd.setCursor(0, 1);
     int val = analogRead(knobPin);
     // val = map(val, 0, 1023, 0, 180);
-    Serial.println(val);
+    if(val>0){
+      Serial.println(val);
+    }
     lcd.print(listeningTo(val));
+    // lcd.print(val);
   Serial.println(listeningTo(val));
     // Serial.println("are you changing");
-    // lcd.print(val);
 
   
 //////////// serial monitor listen ///////////
@@ -81,9 +85,10 @@ void loop() {
 }
 
 String listeningTo(int val){
-    if (0<val<500){
-      return "...the canal";
-      } else if (501<val<1025) {
-        return "...Library square";
-      } else {return "what";}
+
+    if (500<val){
+      return lsquare;
+      } else {
+        return canal;
+      } 
 }
