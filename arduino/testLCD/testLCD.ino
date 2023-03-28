@@ -86,7 +86,7 @@ void loop() {
 
 String listeningTo(int val){
 
-    if (500<val){
+    if (500 < val){
       return lsquare;
       } else {
         return canal;
