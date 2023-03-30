@@ -6,13 +6,15 @@ Serial myPort;
 // citation: https://processing.org/reference/libraries/sound/SoundFile_play_.html
 float w=1023;
 float h=100;
-SoundFile file, file2, file3;
-float files = 3;
+// initiate sound files
+SoundFile file, file2, file3, file4, file5, file6;
+// control variables for amp
+float files = 6;
 float div = w/files;
 int val;
-float amp1 = 0;
-float amp2 = 0;
-float amp3 = 0;
+// initiate amplitude variables
+float amp1,amp2,amp3,amp4,amp5,amp6;
+
 //mouseX= x loc of mouse
 // mouseX/w = will decrease as the mouseX gets bigger towards 1 
 void setup() {
@@ -24,66 +26,80 @@ void setup() {
   file= new SoundFile(this, "../../media/bird.mp3");
   file2= new SoundFile(this, "../../media/canal.mp3");
   file3= new SoundFile(this, "../../media/gsquare.mp3");
-
+  file4= new SoundFile(this, "../../media/underwater.mp3");
+  file5= new SoundFile(this, "../../media/blackpoplar.mp3");
+  file6= new SoundFile(this, "../../media/bee.mp3");
+// play audios on loop and set volumes to start at 0
   file.loop();
   file2.loop();
   file3.loop();
+  file4.loop();
+  file5.loop();
+  file6.loop();
+
   file.amp(0);
   file2.amp(0);
   file3.amp(0);
+  file4.amp(0);
+  file5.amp(0);
+  file6.amp(0);
+
 }
 
 void draw() {
+  // check that we received something
     serialEvent(myPort);   
+    // if the value is not null play audio
     if (val!=0){
+      // clean background 
     background(255);
-  
-    //file.pan(1); //fully left
-    //file.amp(val/(w));
-    //file3.pan(1);
-    // file3.amp((1/3)+(mouseX/(w/3))); //middle?
-    //file2.pan(-1); //fully right
-    //file2.amp(1.0-(val/(w)));
+  // line on potentiometer value reading to make life easy
     line(val, 0, val, h);
-    stroke(255,0,0);//val*random(0.5),val*random(0.5));
+    stroke(255,0,0);
     strokeWeight(4);
+    // make amplitudes change with value
     amp1 = val/div;
     amp2 = (val-div)/(div);
     amp3 = (val-2*div)/(2*div);
+    amp4 = (val-3*div)/(3*div);
+    amp5 = (val-4*div)/(4*div);
+    amp6 = (val-5*div)/(5*div);
 
-
+// play sounds based on potentiometer readings
       if (1 < val && val < div){
         line(div, 0, div, sin(PI*amp1)*h);
         stroke(255,0,0);
-        //println("sound 1");
-        //println(sin(PI*amp1) + " amp1");
+        // making amplitude rise and fall by multiplying it by sin(PI)
         file.amp(sin(PI*amp1));
-        //file.loop();
       } else if ((div) < val && val < (2*div)){
         line(div*2, 0, div*2, h*sin(PI*amp2));
         stroke(255,0,0);
-        //println("sound 2");
-        //println(amp2+" amp2");
          file2.amp(sin(PI*amp2));
-         //file2.loop();
-      } else if ((2*div) < val && val < w){
+      } else if ((2*div) < val && val < (3*div)){
         line(w, 0, w, sin(PI*amp3)*h);
         stroke(255,0,0);
-        //println("sound 3");
-        //println(amp3+" amp3");
         file3.amp(sin(PI*amp3));
-        //file3.loop();
+      } else if ((3*div) < val && val < (4*div)){
+        line(w, 0, w, sin(PI*amp4)*h);
+        stroke(255,0,0);
+        file4.amp(sin(PI*amp4));
+      } else if ((4*div) < val && val < (5*div)){
+        line(w, 0, w, sin(PI*amp5)*h);
+        stroke(255,0,0);
+        file5.amp(sin(PI*amp5));
+      } else if ((5*div) < val && val < (6*div)){
+        line(w, 0, w, sin(PI*amp6)*h);
+        stroke(255,0,0);
+        file6.amp(sin(PI*amp6));
       }
     }
     println(val);
 }
-
+// trimming values from serial port to make sure we get the correct readings
 void serialEvent (Serial port) {
   String inStr = port.readStringUntil('\n');
-//  println(inStr);
   if (inStr != null) {
     String trimStr = trim(inStr);
     val = int(trimStr);
-    //println("str = " + trimStr +  " : int = " + val);
   }
 }
