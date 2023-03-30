@@ -8,7 +8,7 @@
 #define DATA_PIN 9
 #define CLOCK_PIN 13
 
-int numAudio = 3;
+int numAudio = 6;
 int intervalPotentiometer = 1023 / numAudio;
 //potentiometer pin
 int knobPin = A0;
